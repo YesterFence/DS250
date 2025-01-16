@@ -61,6 +61,10 @@ _include figures in chunks and discuss your findings in the figure._
 
 penguins.head()
 
+# To see the end of the penguins
+# penguins.tail()
+#Shows a small chart of info for penguins
+# penguins.info()
 
 ```
 
