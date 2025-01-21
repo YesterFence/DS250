@@ -75,9 +75,22 @@ __Recreate the example charts from [PY4DS: CH2 Data Visualization](https://aetur
 
 
 ```{python}
+(
+ggplot(
+  data = penguins,
+  mapping = aes(x = "flipper_length_mm", y = "body_mass_g" )
+  ) 
+  # Add this into ggplot at the end of mapping to get the entire line: color = "species"
+  + 
+  geom_point(
+    mapping = aes(color = "species")
+  ) + 
+  #smooth adds a line to the graph
+  geom_smooth(type = "lm")
 
-ggplot(data = penguins)
-
+#Lowers the transparency of the dots
+  #aes(alpha = '#')
+)
 
 ```
 
@@ -106,14 +119,15 @@ _include figures in chunks and discuss your findings in the figure._
 
 ```
 
-
+Exercises:
+#1. How many rows are in penguins?
 ```{python}
 # Include and execute your code here
-
+penguins
 
 ```
 
-
+#2. What does the bill_depth_mm variable in the penguins data frame describe?
 ```{python}
 # Include and execute your code here
 

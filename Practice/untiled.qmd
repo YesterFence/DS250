@@ -1,0 +1,76 @@
+---
+title: "Untitled"
+format: html
+---
+
+```{python}
+import pandas as pd
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+```{python}
+df = pd.read_csv("https://byui-cse-github.io/cse110-course/lesson11/life-expectancy.csv")
+
+```
+
+```{python}
+df.Entity[1] #This gives me row 1 of the Entity column
+df[1:3] #This returns row 1 and 2 but not 3
+df[ :3]
+df['Entity'] #To reference columns, give their name
+df['ENtity'].head()
+
+```
+
+<!-- 
+
+Square Bracket  ... does 1 dimension at a time
+loc             ... location, using names
+iloc            ... index location, citation using #'s
+query           ...     
+
+-->
+
+```{python}
+df.loc[11:21, 'Year'] #Using year's column # won't work
+df.loc[11:21, ['Life', 'Year']] #Note the reordered columns
+```
+
+query method, which is more of a pandas approach
+```{python}
+df.iloc[20:30, [0,3]] #Use of slicing and lists of column #'s
+df.iloc[ :4, [0, 3]]
+
+df.iloc[-2: , [0,3]]
+```
+
+```{python}
+df.query('Entity == "France"') #Searches all entities for France and returns True or False
+
+df[df['Entity'] == "France"] #???
+
+#What if I want a set of any of the three
+three_countries = df.query('Entity == ["France", "United States", "Japan"]') #search three_countries["Entity"].value_counts()
+
+#OR
+
+df[df['Entity'].isin(['France', 'United States', 'Japan'])]
+```
+
+```{python}
+#How to get something NOT equal to
+df.query("Entity != 'Zimbabwe'")
+```
+
+```{python}
+df.sort_values("Entity", ascending = False)
+df.sort_values(["Year", "Life"], ascending = False)
+df.sort_values(["Year", "Life"], ascending = False).head(5).Life.mean()
+
+df.Entity.value_counts()
+df.Entity.unique().shape[0]
+
+```
