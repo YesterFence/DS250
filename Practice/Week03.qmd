@@ -74,3 +74,12 @@ df.Entity.value_counts()
 df.Entity.unique().shape[0]
 
 ```
+
+```{python}
+
+usa = df.query('Entity == "united States"')
+(
+    ggplot(data = usa, 
+    mapping = aes(x= 'Life')) + geom_historgram())
+)
+```
