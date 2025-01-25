@@ -12,16 +12,16 @@ LetsPlot.setup_html(isolated_frame=True)
 ```
 
 ```{python}
-df = pd.read_csv("https://byui-cse-github.io/cse110-course/lesson11/life-expectancy.csv")
+df = pd.read_csv("https://byui-cse.github.io/cse110-course/lesson11/life-expectancy.csv")
 
 ```
 
 ```{python}
 df.Entity[1] #This gives me row 1 of the Entity column
-df[1:3] #This returns row 1 and 2 but not 3
-df[ :3]
-df['Entity'] #To reference columns, give their name
-df['ENtity'].head()
+# df[1:3] #This returns row 1 and 2 but not 3
+# df[ :3]
+# df['Entity'] #To reference columns, give their name
+df['Entity'].head()
 
 ```
 
@@ -35,8 +35,12 @@ query           ...
 -->
 
 ```{python}
+df.columns = ['Entity', 'Code', 'Year', 'Life']
+```
+
+```{python}
 df.loc[11:21, 'Year'] #Using year's column # won't work
-df.loc[11:21, ['Life', 'Year']] #Note the reordered columns
+my_new_data = df.loc[11:21, ['Life', 'Year']] #Note the reordered columns
 ```
 
 query method, which is more of a pandas approach
@@ -77,9 +81,44 @@ df.Entity.unique().shape[0]
 
 ```{python}
 
-usa = df.query('Entity == "united States"')
+usa = df.query('Entity == "United States"')
 (
     ggplot(data = usa, 
-    mapping = aes(x= 'Life')) + geom_historgram())
+    mapping = aes(x= 'Life')) + geom_histogram()
+)
+```
+
+
+```{python}
+usa2 = usa.query('Year > 1920 & Year <= 2000')
+(
+    ggplot (data = usa, 
+    mapping = aes(x= "Year", y = "Life"))  + 
+    geom_line() +
+    scale_x_continuous(limits = [1920, 2000]),
+    scale_y_continuous(limits = [50, 80])
+)
+```
+
+```{python}
+(
+    ggplot (data = usa, 
+    mapping = aes(x= "Year", y = "Life"))  + 
+    geom_line() +
+    geom_rect(xmin = 1916, xmax = 1920, ymin = 46, ymax = 55, fill = "red", alpha = .2, color = "rgba(0,0,0,0)") +
+    geom_vline(xintercept = 1943, color = "red", linetype = 2) +
+    geom_text(lable = "Last decreased in 1943", x = 1944, y = 55, angle = 90)
+)
+```
+
+Multiple lines on the same chart
+```{python}
+# In the executable, you can type: "three.info"
+# For specific values: three['Entity'].value_counts()
+three = df.query('Entity == ["United States", "Japan", "France"]')
+(
+    ggplot(data = three,
+    mapping = aes(x= 'Year', y= 'Life')) +
+    geom_line()
 )
 ```
