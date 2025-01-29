@@ -118,7 +118,44 @@ Multiple lines on the same chart
 three = df.query('Entity == ["United States", "Japan", "France"]')
 (
     ggplot(data = three,
-    mapping = aes(x= 'Year', y= 'Life')) +
-    geom_line()
+    mapping = aes(x= 'Year', 
+                  y= 'Life',
+                  color = 'Entity')) +
+    geom_line() +
+    labs(title = "Life Expectancy",
+    subtitle = "Note the impact of WWI and WWII")+
+    theme_classic() +
+    theme(axis_text_y = element_text(color = "blue", size = 12), 
+    plot_title = element_text(hjust = 0.5),
+    panel_grid = element_line(linetype = 2, size = 5))
+    # Theme( = plot_*, panel_*, axis_*, legend_* )
+    # Helper function = element_text(), element_line, element_rect(), element_blank()
 )
+```
+
+<!-- This is a way to make writing themes and plots more managable to read -->
+
+```{python}
+p = (
+    ggplot(data = three,
+    mapping = aes(x= 'Year', 
+                  y= 'Life',
+                  color = 'Entity')) +
+    geom_line() +
+    labs(title = "Life Expectancy",
+    subtitle = "Note the impact of WWI and WWII") 
+    # + geom_text(x = 1900, y = 80, label = "Hello")
+)
+```
+```{python}
+t = (
+    theme_classic() +
+    theme(axis_text_y = element_text(color = "blue", size = 12), 
+    plot_title = element_text(hjust = 0.5),
+    panel_grid = element_line(linetype = 2, size = 5))
+)
+```
+
+```{python}
+p + t
 ```
