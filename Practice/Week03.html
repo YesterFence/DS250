@@ -99,17 +99,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="e87125ae" class="cell" data-execution_count="1">
+<div id="3e5e0e09" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lets_plot <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html(isolated_frame<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="52476a1a" class="cell" data-execution_count="2">
+<div id="da5b41ea" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://byui-cse.github.io/cse110-course/lesson11/life-expectancy.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1f46dfc0" class="cell" data-execution_count="3">
+<div id="eb339acc" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.Entity[<span class="dv">1</span>] <span class="co">#This gives me row 1 of the Entity column</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df[1:3] #This returns row 1 and 2 but not 3</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># df[ :3]</span></span>
@@ -132,15 +132,15 @@ iloc            ... index location, citation using #'s
 query           ...     
 
 -->
-<div id="0e39e56a" class="cell" data-execution_count="4">
+<div id="078cb0e1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> [<span class="st">'Entity'</span>, <span class="st">'Code'</span>, <span class="st">'Year'</span>, <span class="st">'Life'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b23a15f8" class="cell" data-execution_count="5">
+<div id="e4a91b89" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">11</span>:<span class="dv">21</span>, <span class="st">'Year'</span>] <span class="co">#Using year's column # won't work</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>my_new_data <span class="op">=</span> df.loc[<span class="dv">11</span>:<span class="dv">21</span>, [<span class="st">'Life'</span>, <span class="st">'Year'</span>]] <span class="co">#Note the reordered columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>query method, which is more of a pandas approach</p>
-<div id="38e525de" class="cell" data-execution_count="6">
+<div id="8a130dfe" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.iloc[<span class="dv">20</span>:<span class="dv">30</span>, [<span class="dv">0</span>,<span class="dv">3</span>]] <span class="co">#Use of slicing and lists of column #'s</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df.iloc[ :<span class="dv">4</span>, [<span class="dv">0</span>, <span class="dv">3</span>]]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -174,7 +174,7 @@ query           ...
 </div>
 </div>
 </div>
-<div id="6888a114" class="cell" data-execution_count="7">
+<div id="478e4a93" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'Entity == "France"'</span>) <span class="co">#Searches all entities for France and returns True or False</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">'Entity'</span>] <span class="op">==</span> <span class="st">"France"</span>] <span class="co">#???</span></span>
@@ -284,7 +284,7 @@ query           ...
 </div>
 </div>
 </div>
-<div id="393ab6c3" class="cell" data-execution_count="8">
+<div id="dfec463b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#How to get something NOT equal to</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Entity != 'Zimbabwe'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -386,7 +386,7 @@ query           ...
 </div>
 </div>
 </div>
-<div id="8e99584b" class="cell" data-execution_count="9">
+<div id="bd34c29d" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(<span class="st">"Entity"</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df.sort_values([<span class="st">"Year"</span>, <span class="st">"Life"</span>], ascending <span class="op">=</span> <span class="va">False</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df.sort_values([<span class="st">"Year"</span>, <span class="st">"Life"</span>], ascending <span class="op">=</span> <span class="va">False</span>).head(<span class="dv">5</span>).Life.mean()</span>
@@ -397,7 +397,7 @@ query           ...
 <pre><code>243</code></pre>
 </div>
 </div>
-<div id="587005cc" class="cell" data-execution_count="10">
+<div id="306d5375" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>usa <span class="op">=</span> df.query(<span class="st">'Entity == "United States"'</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    ggplot(data <span class="op">=</span> usa, </span>
@@ -411,13 +411,13 @@ query           ...
        <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js"></script>
    
    
-          <div id="mHXYYu"></div>
+          <div id="8IyLeH"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("mHXYYu");
+   var containerDiv = document.getElementById("8IyLeH");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -497,7 +497,7 @@ query           ...
 
 </div>
 </div>
-<div id="183269e8" class="cell" data-execution_count="11">
+<div id="a7288495" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>usa2 <span class="op">=</span> usa.query(<span class="st">'Year &gt; 1920 &amp; Year &lt;= 2000'</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    ggplot (data <span class="op">=</span> usa, </span>
@@ -507,11 +507,11 @@ query           ...
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    scale_y_continuous(limits <span class="op">=</span> [<span class="dv">50</span>, <span class="dv">80</span>])</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>(&lt;lets_plot.plot.core.PlotSpec at 0x2ad18175350&gt;,
- &lt;lets_plot.plot.core.FeatureSpec at 0x2ad180179b0&gt;)</code></pre>
+<pre><code>(&lt;lets_plot.plot.core.PlotSpec at 0x17c7dad5350&gt;,
+ &lt;lets_plot.plot.core.FeatureSpec at 0x17c7d9779b0&gt;)</code></pre>
 </div>
 </div>
-<div id="60d3046a" class="cell" data-execution_count="12">
+<div id="d52250c6" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    ggplot (data <span class="op">=</span> usa, </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    mapping <span class="op">=</span> aes(x<span class="op">=</span> <span class="st">"Year"</span>, y <span class="op">=</span> <span class="st">"Life"</span>))  <span class="op">+</span> </span>
@@ -528,13 +528,13 @@ query           ...
        <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js"></script>
    
    
-          <div id="VzU9vR"></div>
+          <div id="zTXIPN"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("VzU9vR");
+   var containerDiv = document.getElementById("zTXIPN");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -654,15 +654,25 @@ query           ...
 </div>
 </div>
 <p>Multiple lines on the same chart</p>
-<div id="5c2f78ef" class="cell" data-execution_count="13">
+<div id="6805a10a" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the executable, you can type: "three.info"</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For specific values: three['Entity'].value_counts()</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>three <span class="op">=</span> df.query(<span class="st">'Entity == ["United States", "Japan", "France"]'</span>)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    ggplot(data <span class="op">=</span> three,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    mapping <span class="op">=</span> aes(x<span class="op">=</span> <span class="st">'Year'</span>, y<span class="op">=</span> <span class="st">'Life'</span>)) <span class="op">+</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    geom_line()</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    mapping <span class="op">=</span> aes(x<span class="op">=</span> <span class="st">'Year'</span>, </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                  y<span class="op">=</span> <span class="st">'Life'</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                  color <span class="op">=</span> <span class="st">'Entity'</span>)) <span class="op">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    geom_line() <span class="op">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    labs(title <span class="op">=</span> <span class="st">"Life Expectancy"</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    subtitle <span class="op">=</span> <span class="st">"Note the impact of WWI and WWII"</span>)<span class="op">+</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    theme_classic() <span class="op">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    theme(axis_text_y <span class="op">=</span> element_text(color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="dv">12</span>), </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    plot_title <span class="op">=</span> element_text(hjust <span class="op">=</span> <span class="fl">0.5</span>),</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    panel_grid <span class="op">=</span> element_line(linetype <span class="op">=</span> <span class="dv">2</span>, size <span class="op">=</span> <span class="dv">5</span>))</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Theme( = plot_*, panel_*, axis_*, legend_* )</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Helper function = element_text(), element_line, element_rect(), element_blank()</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 
    
@@ -671,13 +681,13 @@ query           ...
        <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js"></script>
    
    
-          <div id="Xsnzsx"></div>
+          <div id="eoO71V"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("Xsnzsx");
+   var containerDiv = document.getElementById("eoO71V");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -691,12 +701,14 @@ query           ...
 
                var plotSpec={
 "data":{
+"Entity":["France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States"],
 "Year":[1816.0,1817.0,1818.0,1819.0,1820.0,1821.0,1822.0,1823.0,1824.0,1825.0,1826.0,1827.0,1828.0,1829.0,1830.0,1831.0,1832.0,1833.0,1834.0,1835.0,1836.0,1837.0,1838.0,1839.0,1840.0,1841.0,1842.0,1843.0,1844.0,1845.0,1846.0,1847.0,1848.0,1849.0,1850.0,1851.0,1852.0,1853.0,1854.0,1855.0,1856.0,1857.0,1858.0,1859.0,1860.0,1861.0,1862.0,1863.0,1864.0,1865.0,1866.0,1867.0,1868.0,1869.0,1870.0,1871.0,1872.0,1873.0,1874.0,1875.0,1876.0,1877.0,1878.0,1879.0,1880.0,1881.0,1882.0,1883.0,1884.0,1885.0,1886.0,1887.0,1888.0,1889.0,1890.0,1891.0,1892.0,1893.0,1894.0,1895.0,1896.0,1897.0,1898.0,1899.0,1900.0,1901.0,1902.0,1903.0,1904.0,1905.0,1906.0,1907.0,1908.0,1909.0,1910.0,1911.0,1912.0,1913.0,1914.0,1915.0,1916.0,1917.0,1918.0,1919.0,1920.0,1921.0,1922.0,1923.0,1924.0,1925.0,1926.0,1927.0,1928.0,1929.0,1930.0,1931.0,1932.0,1933.0,1934.0,1935.0,1936.0,1937.0,1938.0,1939.0,1940.0,1941.0,1942.0,1943.0,1944.0,1945.0,1946.0,1947.0,1948.0,1949.0,1950.0,1951.0,1952.0,1953.0,1954.0,1955.0,1956.0,1957.0,1958.0,1959.0,1960.0,1961.0,1962.0,1963.0,1964.0,1965.0,1966.0,1967.0,1968.0,1969.0,1970.0,1971.0,1972.0,1973.0,1974.0,1975.0,1976.0,1977.0,1978.0,1979.0,1980.0,1981.0,1982.0,1983.0,1984.0,1985.0,1986.0,1987.0,1988.0,1989.0,1990.0,1991.0,1992.0,1993.0,1994.0,1995.0,1996.0,1997.0,1998.0,1999.0,2000.0,2001.0,2002.0,2003.0,2004.0,2005.0,2006.0,2007.0,2008.0,2009.0,2010.0,2011.0,2012.0,2013.0,2014.0,2015.0,2016.0,2017.0,2018.0,2019.0,1865.0,1870.0,1875.0,1880.0,1885.0,1890.0,1895.0,1900.0,1905.0,1910.0,1915.0,1920.0,1922.0,1927.0,1935.0,1945.0,1947.0,1948.0,1949.0,1950.0,1951.0,1952.0,1953.0,1954.0,1955.0,1956.0,1957.0,1958.0,1959.0,1960.0,1961.0,1962.0,1963.0,1964.0,1965.0,1966.0,1967.0,1968.0,1969.0,1970.0,1971.0,1972.0,1973.0,1974.0,1975.0,1976.0,1977.0,1978.0,1979.0,1980.0,1981.0,1982.0,1983.0,1984.0,1985.0,1986.0,1987.0,1988.0,1989.0,1990.0,1991.0,1992.0,1993.0,1994.0,1995.0,1996.0,1997.0,1998.0,1999.0,2000.0,2001.0,2002.0,2003.0,2004.0,2005.0,2006.0,2007.0,2008.0,2009.0,2010.0,2011.0,2012.0,2013.0,2014.0,2015.0,2016.0,2017.0,2018.0,2019.0,1880.0,1890.0,1901.0,1902.0,1903.0,1904.0,1905.0,1906.0,1907.0,1908.0,1909.0,1910.0,1911.0,1912.0,1913.0,1914.0,1915.0,1916.0,1917.0,1918.0,1919.0,1920.0,1921.0,1922.0,1923.0,1924.0,1925.0,1926.0,1927.0,1928.0,1929.0,1930.0,1931.0,1932.0,1933.0,1934.0,1935.0,1936.0,1937.0,1938.0,1939.0,1940.0,1941.0,1942.0,1943.0,1944.0,1945.0,1946.0,1947.0,1948.0,1949.0,1950.0,1951.0,1952.0,1953.0,1954.0,1955.0,1956.0,1957.0,1958.0,1959.0,1960.0,1961.0,1962.0,1963.0,1964.0,1965.0,1966.0,1967.0,1968.0,1969.0,1970.0,1971.0,1972.0,1973.0,1974.0,1975.0,1976.0,1977.0,1978.0,1979.0,1980.0,1981.0,1982.0,1983.0,1984.0,1985.0,1986.0,1987.0,1988.0,1989.0,1990.0,1991.0,1992.0,1993.0,1994.0,1995.0,1996.0,1997.0,1998.0,1999.0,2000.0,2001.0,2002.0,2003.0,2004.0,2005.0,2006.0,2007.0,2008.0,2009.0,2010.0,2011.0,2012.0,2013.0,2014.0,2015.0,2016.0,2017.0,2018.0,2019.0],
 "Life":[40.049999,39.18,38.549999,37.279999,39.23,39.84,38.310001,39.990002,39.16,38.529999,37.759998,39.360001,37.560001,39.400002,39.59,39.689999,35.830002,38.84,35.040001,39.48,41.959999,39.380001,39.330002,40.919998,40.380001,40.68,39.990002,40.759998,42.299999,43.580002,40.66,40.419998,40.290001,35.919998,43.279999,41.77,41.310001,42.52,36.130001,37.529999,40.150002,39.560001,39.669998,35.27,43.32,40.419998,42.669998,41.720001,41.970001,40.119999,41.810001,42.32,40.209999,41.130001,36.389999,29.58,42.630001,41.759998,44.299999,43.119999,43.509998,44.290001,43.310001,43.950001,42.689999,43.490002,43.080002,43.209999,42.43,43.900002,43.099998,43.689999,44.07,45.490002,43.32,44.07,43.509998,43.509998,45.450001,45.130001,47.490002,47.860001,45.919998,45.150002,45.009998,46.93,47.959999,48.369999,48.029999,48.299999,47.68,48.240002,49.27,49.959999,51.330002,48.130001,51.57,51.310001,38.200001,36.25,40.220001,43.080002,34.84,47.599998,51.529999,52.619999,54.849998,54.59,55.209999,54.330002,53.970001,55.740002,55.380001,54.23,56.830002,56.889999,57.220001,57.66,58.32,58.290001,58.779999,59.139999,58.950001,59.59,49.549999,57.66,57.41,53.330002,47.200001,54.939999,62.349998,63.939999,65.800003,64.889999,66.233,66.506,67.037,67.538,68.009,68.45,68.86,69.239,69.586,69.9,70.181,70.427,70.64,70.823,70.984,71.131,71.271,71.411,71.561,71.723,71.904,72.106,72.323,72.552,72.79,73.033,73.276,73.515,73.749,73.978,74.204,74.433,74.67,74.918,75.176,75.442,75.713,75.984,76.249,76.508,76.757,76.997,77.229,77.457,77.681,77.902,78.12,78.338,78.557,78.779,79.008,79.246,79.496,79.755,80.021,80.291,80.558,80.819,81.067,81.299,81.508,81.692,81.852,81.992,82.114,82.224,82.328,82.432,82.541,82.659,36.425838,36.59264,36.799438,37.03648,37.3284,37.675678,38.097839,38.599998,39.22192,39.973598,40.899441,42.044319,42.616322,45.659359,48.242481,30.5368,51.689999,56.830002,57.709999,61.152,61.583,62.427,63.234,64.005,64.739,65.437,66.099,66.727,67.322,67.887,68.424,68.935,69.426,69.898,70.351,70.786,71.2,71.596,71.98,72.358,72.74,73.131,73.533,73.945,74.361,74.774,75.174,75.554,75.913,76.252,76.578,76.897,77.213,77.525,77.827,78.111,78.372,78.605,78.814,79.004,79.18,79.355,79.536,79.727,79.935,80.162,80.404,80.656,80.914,81.171,81.422,81.661,81.883,82.087,82.27,82.431,82.575,82.709,82.838,82.971,83.118,83.283,83.467,83.668,83.879,84.09,84.29,84.47,84.629,39.41,45.209999,49.299999,50.5,50.599998,49.599998,50.299999,50.099998,50.200001,51.900002,52.799999,51.799999,53.400002,54.099998,53.5,54.599998,55.099998,54.200001,54.0,47.200001,55.299999,55.400002,58.200001,58.099998,57.5,58.5,58.5,57.900002,59.400002,58.299999,58.5,59.599998,60.299999,61.0,60.880001,60.23,60.889999,60.349998,61.049999,62.389999,63.07,63.23,63.799999,64.589996,64.300003,65.089996,65.580002,66.279999,66.690002,67.25,67.629997,68.202,68.338,68.601,68.842,69.063,69.263,69.441,69.598,69.734,69.848,69.94,70.011,70.064,70.106,70.144,70.188,70.247,70.328,70.44,70.586,70.777,71.017,71.303,71.624,71.972,72.333,72.695,73.044,73.368,73.66,73.91,74.118,74.289,74.432,74.554,74.662,74.765,74.87,74.983,75.107,75.246,75.4,75.562,75.728,75.896,76.062,76.222,76.376,76.524,76.668,76.812,76.962,77.124,77.299,77.486,77.685,77.892,78.101,78.303,78.49,78.652,78.777,78.862,78.909,78.922,78.91,78.885,78.861,78.851,78.862]
 },
 "mapping":{
 "x":"Year",
-"y":"Life"
+"y":"Life",
+"color":"Entity"
 },
 "data_meta":{
 "series_annotations":[{
@@ -713,6 +725,27 @@ query           ...
 "column":"Life"
 }]
 },
+"ggtitle":{
+"text":"Life Expectancy",
+"subtitle":"Note the impact of WWI and WWII"
+},
+"theme":{
+"name":"classic",
+"axis_text_y":{
+"color":"blue",
+"size":12.0,
+"blank":false
+},
+"panel_grid":{
+"size":5.0,
+"linetype":2.0,
+"blank":false
+},
+"plot_title":{
+"hjust":0.5,
+"blank":false
+}
+},
 "kind":"plot",
 "scales":[],
 "layers":[{
@@ -726,6 +759,147 @@ query           ...
 }],
 "metainfo_list":[],
 "spec_id":"3"
+};
+       
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+               
+               var options = {
+                   sizing: {
+                       width_mode: "min",
+                       height_mode: "scaled",
+                       width: width
+                   }
+               };
+               var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+               if (toolbar) {
+                 toolbar.bind(fig);
+               }
+               
+               break;
+           }
+       }
+   });
+   
+   observer.observe(containerDiv);
+   
+   // ----------
+   })();
+   
+   </script>
+   
+
+</div>
+</div>
+<!-- This is a way to make writing themes and plots more managable to read -->
+<div id="b79fe82f" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    ggplot(data <span class="op">=</span> three,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    mapping <span class="op">=</span> aes(x<span class="op">=</span> <span class="st">'Year'</span>, </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                  y<span class="op">=</span> <span class="st">'Life'</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                  color <span class="op">=</span> <span class="st">'Entity'</span>)) <span class="op">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    geom_line() <span class="op">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    labs(title <span class="op">=</span> <span class="st">"Life Expectancy"</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    subtitle <span class="op">=</span> <span class="st">"Note the impact of WWI and WWII"</span>) </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># + geom_text(x = 1900, y = 80, label = "Hello")</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cedf0ea2" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> (</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    theme_classic() <span class="op">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    theme(axis_text_y <span class="op">=</span> element_text(color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="dv">12</span>), </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    plot_title <span class="op">=</span> element_text(hjust <span class="op">=</span> <span class="fl">0.5</span>),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    panel_grid <span class="op">=</span> element_line(linetype <span class="op">=</span> <span class="dv">2</span>, size <span class="op">=</span> <span class="dv">5</span>))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="6f9583be" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">+</span> t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+
+   
+       <meta charset="UTF-8">
+       <style> html, body { margin: 0; padding: 0; } </style>
+       <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js"></script>
+   
+   
+          <div id="ItUkku"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   var containerDiv = document.getElementById("ItUkku");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+           
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
+"data":{
+"Entity":["France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","France","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","Japan","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States","United States"],
+"Year":[1816.0,1817.0,1818.0,1819.0,1820.0,1821.0,1822.0,1823.0,1824.0,1825.0,1826.0,1827.0,1828.0,1829.0,1830.0,1831.0,1832.0,1833.0,1834.0,1835.0,1836.0,1837.0,1838.0,1839.0,1840.0,1841.0,1842.0,1843.0,1844.0,1845.0,1846.0,1847.0,1848.0,1849.0,1850.0,1851.0,1852.0,1853.0,1854.0,1855.0,1856.0,1857.0,1858.0,1859.0,1860.0,1861.0,1862.0,1863.0,1864.0,1865.0,1866.0,1867.0,1868.0,1869.0,1870.0,1871.0,1872.0,1873.0,1874.0,1875.0,1876.0,1877.0,1878.0,1879.0,1880.0,1881.0,1882.0,1883.0,1884.0,1885.0,1886.0,1887.0,1888.0,1889.0,1890.0,1891.0,1892.0,1893.0,1894.0,1895.0,1896.0,1897.0,1898.0,1899.0,1900.0,1901.0,1902.0,1903.0,1904.0,1905.0,1906.0,1907.0,1908.0,1909.0,1910.0,1911.0,1912.0,1913.0,1914.0,1915.0,1916.0,1917.0,1918.0,1919.0,1920.0,1921.0,1922.0,1923.0,1924.0,1925.0,1926.0,1927.0,1928.0,1929.0,1930.0,1931.0,1932.0,1933.0,1934.0,1935.0,1936.0,1937.0,1938.0,1939.0,1940.0,1941.0,1942.0,1943.0,1944.0,1945.0,1946.0,1947.0,1948.0,1949.0,1950.0,1951.0,1952.0,1953.0,1954.0,1955.0,1956.0,1957.0,1958.0,1959.0,1960.0,1961.0,1962.0,1963.0,1964.0,1965.0,1966.0,1967.0,1968.0,1969.0,1970.0,1971.0,1972.0,1973.0,1974.0,1975.0,1976.0,1977.0,1978.0,1979.0,1980.0,1981.0,1982.0,1983.0,1984.0,1985.0,1986.0,1987.0,1988.0,1989.0,1990.0,1991.0,1992.0,1993.0,1994.0,1995.0,1996.0,1997.0,1998.0,1999.0,2000.0,2001.0,2002.0,2003.0,2004.0,2005.0,2006.0,2007.0,2008.0,2009.0,2010.0,2011.0,2012.0,2013.0,2014.0,2015.0,2016.0,2017.0,2018.0,2019.0,1865.0,1870.0,1875.0,1880.0,1885.0,1890.0,1895.0,1900.0,1905.0,1910.0,1915.0,1920.0,1922.0,1927.0,1935.0,1945.0,1947.0,1948.0,1949.0,1950.0,1951.0,1952.0,1953.0,1954.0,1955.0,1956.0,1957.0,1958.0,1959.0,1960.0,1961.0,1962.0,1963.0,1964.0,1965.0,1966.0,1967.0,1968.0,1969.0,1970.0,1971.0,1972.0,1973.0,1974.0,1975.0,1976.0,1977.0,1978.0,1979.0,1980.0,1981.0,1982.0,1983.0,1984.0,1985.0,1986.0,1987.0,1988.0,1989.0,1990.0,1991.0,1992.0,1993.0,1994.0,1995.0,1996.0,1997.0,1998.0,1999.0,2000.0,2001.0,2002.0,2003.0,2004.0,2005.0,2006.0,2007.0,2008.0,2009.0,2010.0,2011.0,2012.0,2013.0,2014.0,2015.0,2016.0,2017.0,2018.0,2019.0,1880.0,1890.0,1901.0,1902.0,1903.0,1904.0,1905.0,1906.0,1907.0,1908.0,1909.0,1910.0,1911.0,1912.0,1913.0,1914.0,1915.0,1916.0,1917.0,1918.0,1919.0,1920.0,1921.0,1922.0,1923.0,1924.0,1925.0,1926.0,1927.0,1928.0,1929.0,1930.0,1931.0,1932.0,1933.0,1934.0,1935.0,1936.0,1937.0,1938.0,1939.0,1940.0,1941.0,1942.0,1943.0,1944.0,1945.0,1946.0,1947.0,1948.0,1949.0,1950.0,1951.0,1952.0,1953.0,1954.0,1955.0,1956.0,1957.0,1958.0,1959.0,1960.0,1961.0,1962.0,1963.0,1964.0,1965.0,1966.0,1967.0,1968.0,1969.0,1970.0,1971.0,1972.0,1973.0,1974.0,1975.0,1976.0,1977.0,1978.0,1979.0,1980.0,1981.0,1982.0,1983.0,1984.0,1985.0,1986.0,1987.0,1988.0,1989.0,1990.0,1991.0,1992.0,1993.0,1994.0,1995.0,1996.0,1997.0,1998.0,1999.0,2000.0,2001.0,2002.0,2003.0,2004.0,2005.0,2006.0,2007.0,2008.0,2009.0,2010.0,2011.0,2012.0,2013.0,2014.0,2015.0,2016.0,2017.0,2018.0,2019.0],
+"Life":[40.049999,39.18,38.549999,37.279999,39.23,39.84,38.310001,39.990002,39.16,38.529999,37.759998,39.360001,37.560001,39.400002,39.59,39.689999,35.830002,38.84,35.040001,39.48,41.959999,39.380001,39.330002,40.919998,40.380001,40.68,39.990002,40.759998,42.299999,43.580002,40.66,40.419998,40.290001,35.919998,43.279999,41.77,41.310001,42.52,36.130001,37.529999,40.150002,39.560001,39.669998,35.27,43.32,40.419998,42.669998,41.720001,41.970001,40.119999,41.810001,42.32,40.209999,41.130001,36.389999,29.58,42.630001,41.759998,44.299999,43.119999,43.509998,44.290001,43.310001,43.950001,42.689999,43.490002,43.080002,43.209999,42.43,43.900002,43.099998,43.689999,44.07,45.490002,43.32,44.07,43.509998,43.509998,45.450001,45.130001,47.490002,47.860001,45.919998,45.150002,45.009998,46.93,47.959999,48.369999,48.029999,48.299999,47.68,48.240002,49.27,49.959999,51.330002,48.130001,51.57,51.310001,38.200001,36.25,40.220001,43.080002,34.84,47.599998,51.529999,52.619999,54.849998,54.59,55.209999,54.330002,53.970001,55.740002,55.380001,54.23,56.830002,56.889999,57.220001,57.66,58.32,58.290001,58.779999,59.139999,58.950001,59.59,49.549999,57.66,57.41,53.330002,47.200001,54.939999,62.349998,63.939999,65.800003,64.889999,66.233,66.506,67.037,67.538,68.009,68.45,68.86,69.239,69.586,69.9,70.181,70.427,70.64,70.823,70.984,71.131,71.271,71.411,71.561,71.723,71.904,72.106,72.323,72.552,72.79,73.033,73.276,73.515,73.749,73.978,74.204,74.433,74.67,74.918,75.176,75.442,75.713,75.984,76.249,76.508,76.757,76.997,77.229,77.457,77.681,77.902,78.12,78.338,78.557,78.779,79.008,79.246,79.496,79.755,80.021,80.291,80.558,80.819,81.067,81.299,81.508,81.692,81.852,81.992,82.114,82.224,82.328,82.432,82.541,82.659,36.425838,36.59264,36.799438,37.03648,37.3284,37.675678,38.097839,38.599998,39.22192,39.973598,40.899441,42.044319,42.616322,45.659359,48.242481,30.5368,51.689999,56.830002,57.709999,61.152,61.583,62.427,63.234,64.005,64.739,65.437,66.099,66.727,67.322,67.887,68.424,68.935,69.426,69.898,70.351,70.786,71.2,71.596,71.98,72.358,72.74,73.131,73.533,73.945,74.361,74.774,75.174,75.554,75.913,76.252,76.578,76.897,77.213,77.525,77.827,78.111,78.372,78.605,78.814,79.004,79.18,79.355,79.536,79.727,79.935,80.162,80.404,80.656,80.914,81.171,81.422,81.661,81.883,82.087,82.27,82.431,82.575,82.709,82.838,82.971,83.118,83.283,83.467,83.668,83.879,84.09,84.29,84.47,84.629,39.41,45.209999,49.299999,50.5,50.599998,49.599998,50.299999,50.099998,50.200001,51.900002,52.799999,51.799999,53.400002,54.099998,53.5,54.599998,55.099998,54.200001,54.0,47.200001,55.299999,55.400002,58.200001,58.099998,57.5,58.5,58.5,57.900002,59.400002,58.299999,58.5,59.599998,60.299999,61.0,60.880001,60.23,60.889999,60.349998,61.049999,62.389999,63.07,63.23,63.799999,64.589996,64.300003,65.089996,65.580002,66.279999,66.690002,67.25,67.629997,68.202,68.338,68.601,68.842,69.063,69.263,69.441,69.598,69.734,69.848,69.94,70.011,70.064,70.106,70.144,70.188,70.247,70.328,70.44,70.586,70.777,71.017,71.303,71.624,71.972,72.333,72.695,73.044,73.368,73.66,73.91,74.118,74.289,74.432,74.554,74.662,74.765,74.87,74.983,75.107,75.246,75.4,75.562,75.728,75.896,76.062,76.222,76.376,76.524,76.668,76.812,76.962,77.124,77.299,77.486,77.685,77.892,78.101,78.303,78.49,78.652,78.777,78.862,78.909,78.922,78.91,78.885,78.861,78.851,78.862]
+},
+"mapping":{
+"x":"Year",
+"y":"Life",
+"color":"Entity"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"Entity"
+},{
+"type":"str",
+"column":"Code"
+},{
+"type":"int",
+"column":"Year"
+},{
+"type":"float",
+"column":"Life"
+}]
+},
+"ggtitle":{
+"text":"Life Expectancy",
+"subtitle":"Note the impact of WWI and WWII"
+},
+"theme":{
+"name":"classic",
+"axis_text_y":{
+"color":"blue",
+"size":12.0,
+"blank":false
+},
+"panel_grid":{
+"size":5.0,
+"linetype":2.0,
+"blank":false
+},
+"plot_title":{
+"hjust":0.5,
+"blank":false
+}
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"line",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"4"
 };
        
                var toolbar = null;

@@ -13,10 +13,17 @@ df = pd.read_csv(url)
 
 ```{python}
 
-    name_oliver = ["Oliver"]
-    df[df["name"].isin(name_oliver)]
 
-    count = df[(df["name"] == name_oliver) & (df["UT"] == state_ut)].shape[0]
+    total_oliver_ut = df[df["name"] == "Oliver"]["UT"].sum()
+    print(f"Total occurrences of 'Oliver' in Utah (UT): {total_oliver_ut}")
+
+    # name_oliver = ["Oliver"]
+    # df[df["name"].isin(name_oliver)]
+
+    # name_oliver = "Oliver"
+    # state_ut = "UT"
+
+    # count = df[(df["Oliver"] == name_oliver) & (df["UT"] == state_ut)].shape[0]
     
-    print(f"Total occurrences of 'Oliver' in Utah (UT): {count}")
+    # print(f"{name_oliver} {state_ut} {count}")
 ```
