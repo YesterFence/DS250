@@ -133,7 +133,7 @@ __Think of a unique name from a famous movie. Plot the usage of that name and se
 
 _Nightmare on Elm Street has a huge impact in the horror culture. After the first film that was made, a surge of people started naming their kids after a killer?
 Over all, I do believe that this data does line up with people nameing their kids Freddy. 
-Also, I wanted to see if Freddy Mercury had any affect on the chart as well. _
+Also, I wanted to see if Freddy Mercury had any affect on the chart as well, but no major changes are seen. _
 
 ```{python}
 # Include and execute your code here
@@ -160,7 +160,9 @@ scarryMovie = df.query('name == "Freddy"')
 
 __Reproduce the chart Elliot using the data from the `names_year.csv` file.__ 
 
-_type your results and analysis here_
+_The things I learned in this Stretch Question was how to get the chart to not only get the name of the person who I'm graphing,
+ but to also change the color of the chart as well. I learned that by just adding the name of the person would make the line red, and by 
+ manually changing the colors was the key._
 
 ```{python}
 # Include and execute your code here
@@ -170,17 +172,20 @@ isElliot = df.query('name == "Elliot"')
   mapping = aes(x= 'year', y= 'Total', color= "name")) +
   geom_line() +
   scale_color_manual(values={"Elliot": "blue"}) +
-  scale_x_continuous(limits = [1950, 2020], format = 'd') +
+  scale_x_continuous(limits = [1950, 2020], format = 'd', expand=[0.005, 0.005]) +
   geom_vline(xintercept = 1982, color = "red", linetype = 2) +
   geom_vline(xintercept = 1985, color = "red", linetype = 2) +
-  geom_vline(xintercept = 2001, color = "red", linetype = 2)
-  # geom_text(label = "Text Here", x= , y= , angle = 0)
-  # geom_text()
-  # geom_text()
-  # theme(
-  # legend_justification=[1,1]
-  # )
-)
+  geom_vline(xintercept = 2001, color = "red", linetype = 2) +
+  geom_text(label = "E.T Released", x= 1974 , y= 1250 , size = 6, color = "black", angle = 0) +
+  geom_text(label = "Second Release", x= 1993, y= 1250, size = 6, color = 'black', angle = 0) +
+  geom_text(label = "Third Release", x= 2009, y= 1250, size = 6, color = 'black', angle = 0) +
+  theme
+  (
+    panel_background=element_rect(fill="lightblue"),
+    legend_justification= [1,1]
+  )
+  ) 
+  
 
 ```
 
