@@ -1,0 +1,160 @@
+---
+title: "Class Demo"
+subtitle: "Course DS 250"
+author: "[Ryan Lee]"
+format:
+  html:
+    self-contained: true
+    page-layout: full
+    title-block-banner: true
+    toc: true
+    toc-depth: 3
+    toc-location: body
+    number-sections: false
+    html-math-method: katex
+    code-fold: true
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-copy: hover
+    code-tools:
+        source: false
+        toggle: true
+        caption: See code
+execute: 
+  warning: false
+    
+---
+
+```{python}
+import pandas as pd 
+import numpy as np
+import sqlite3
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+sqlite_file = 'lahmansbaseballdb.sqlite'
+# this file must be in the same location as your .qmd or .py file
+con = sqlite3.connect(sqlite_file)
+```
+
+```{python}
+q = 'SELECT * FROM managers LIMIT 5'
+results = pd.read_sql_query(q,con)
+
+results
+```
+
+## Class Demo
+(To comment out, use /* */)
+
+```{python}
+q = """SELECT playerID,
+            G AS 'Games_managed',
+            W AS 'Wins', 
+            L AS 'Losses',
+            (W * 1.0 / G) AS 'Win %',
+            (W / G) * 1.0 AS 'Win%2',
+            (CAST(W AS FLOAT) / G) AS 'Win%3',
+            CAST((W / G) AS FLOAT) AS 'Win%4'
+
+    FROM managers"""
+
+results = pd.read_sql_query(q,con)
+
+results
+
+```
+
+## MAKE SURE TO YOU BACKTICKS ` IN THE ORDER BY LINE
+```{python}
+q = """SELECT playerID,
+            yearID,
+            teamID,
+            G AS 'Games_managed',
+            W AS 'Wins', 
+            L AS 'Losses',
+            (W * 1.0 / G) AS 'Win %'
+
+    FROM managers
+    WHERE (G > 8 and yearID > 1960) AND
+            --teamID == 'SEA' OR teamID LIKE '%SF%'
+            teamID NOT IN ('SEA', 'SFN', 'SDN')
+    ORDER BY `Win %` DESC, G DESC
+    LIMIT 10
+    """
+
+results = pd.read_sql_query(q,con)
+
+results
+
+```
+
+## Group By and Aggregation (aka summaries)
+```{python}
+q = """SELECT playerID,
+            teamID,
+            sum(G) AS 'Games_managed',
+            sum(W) AS 'Wins', 
+            sum(L) AS 'Losses',
+            /* sum(w * 1.0 / G) AS 'Overall Sum', */
+            (sum(W) * 1.0 / sum(G)) AS 'Win %'
+
+    FROM managers
+    -- WHERE G > 8 -- Dismissing all games under 8
+    GROUP BY playerID
+    /* ORDER BY `Win %` DESC, G DESC */
+    HAVING `Games_managed` > 8
+    LIMIT 10
+    """
+
+results = pd.read_sql_query(q,con)
+
+results
+```
+
+## Joins
+```{python}
+q = """SELECT *
+       FROM schools
+       LEFT OUTER JOIN parks ON schools.city = parks.city
+       WHERE schools.city == "Los Angeles"
+    """
+    # you could do:
+    # select schools.*,
+    #     parks.parkname,
+    #     parks.country AS country_parks
+
+results = pd.read_sql_query(q, con)
+results
+```
+
+## Full Joins
+```{python}
+q = """SELECT *
+       FROM schools
+       FULL OUTER JOIN parks ON schools.city = parks.city
+    """
+
+results = pd.read_sql_query(q, con)
+results
+```
+
+```{python}
+q = """SELECT *
+       FROM schools
+       JOIN parks ON schools.city = parks.city AND
+                                schools.state = parks.state
+    """
+
+results = pd.read_sql_query(q, con)
+results
+```
+
+---
