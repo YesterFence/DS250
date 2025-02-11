@@ -157,4 +157,19 @@ results = pd.read_sql_query(q, con)
 results
 ```
 
+```{python}
+
+q = """
+      -- SELECT SUM(AB) AS total_bat
+      SELECT (sum(W) * 1.0 / sum(G)) AS 'ave_win'
+      From batting
+      LIMIT 2;
+    """
+
+qr = pd.read_sql_query(q,con)
+
+qr
+
+```
+
 ---
