@@ -172,4 +172,67 @@ qr
 
 ```
 
+### Multiple Joins
+```{python}
+q = """SELECT s.*,
+              p.parkname,
+              teams.name
+       FROM schools AS s
+       JOIN parks AS p ON s.city = p.city AND
+                          s.state = p.state
+        Join teams ON teams.park = p.parkname
+        WHERE teams.yearID = 2019
+        LIMIT 10
+        """
+results = pd.read_sql_query(q, con)
+results
+```
+### Sub-queries
+This shows how many schools were per park
+```{python}
+q = """SELECT s.*,
+              p.parkname,
+              COUNT(schoolID) AS schools
+      FROM schools AS s
+      JOIN parks AS p ON s.city = p.city AND
+                         s.state = p.state
+      Group BY s.city
+        LIMIT 10
+        """
+results = pd.read_sql_query(q, con)
+results
+```
+
+
+### WITH example practice
+Table for avg attendance for the past 5 years
+```{python}
+q = """WITH attendance AS (SELECT name,
+              park,
+              teamID,
+              AVG(attendance) AS avg_attendance,
+              COUNT(attendance),
+      FROM teams
+      WHERE yearID >= 2015 AND yearID <= 2019
+      -- WHERE yearID BETWEEN 2015 AND 2019
+      GROUP BY name),
+
+      my_schools AS( SELECT s.*,
+              p.parkname,
+              COUNT(schoolID) AS schools
+      FROM schools AS s
+      JOIN parks AS p ON s.city = p.city AND
+                         s.state = p.state
+      Group BY s.city
+        LIMIT 10)
+
+      SELECT a.avg_attendance,
+             a.name,
+             a.park
+      FROM attendance AS a
+      JOIN 
+    """
+result = pd.read_sql_query(q, con)
+result
+```
 ---

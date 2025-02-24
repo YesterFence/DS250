@@ -1,0 +1,132 @@
+---
+title: "Untitled"
+format: html
+---
+
+Load your libraries:
+
+```{python}
+#import sys
+#!{sys.executable} -m pip install requests
+# %%
+# The usuals
+import pandas as pd
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+Let's create a toy dataset to practice on
+
+```{python}
+# %%
+# missing data
+df = (pd.DataFrame(
+    np.random.randn(5, 3), 
+    index=['a', 'c', 'e', 'f', 'h'],
+    columns=['one', 'two', 'three'])
+  .assign(
+    six = [np.nan, np.nan, 2, 2, 1],
+    seven = [4, 5, 5, np.nan, np.nan],
+    four = ['bar', '', 'bar', 'bar', np.nan], 
+    five = lambda x: x.one > 0
+)
+  )
+df
+```
+
+
+
+## Dealing with missing data
+```{python}
+# df.six + df.seven
+df.seven.sum()
+```
+
+## Write it out to JSON
+
+2 Main ways to deal with NA's:
+
+-fillna()
+  - Pros: Good if you plan to fill in NA's in various columns with different values
+  - Cons: Limited to deal with only NA's
+
+-replace()
+  - Pros: It can replace any value, not just NA's
+  - Cons: Column specific replacement values requires nested dictionaries... messy code
+
+Start with fillna()
+```{python}
+df_og = df
+
+# df.seven.fillna(0)
+df.seven.fillna(0).mean()
+
+df.seven.fillna(df.seven.mean()) + df.six.fillna(df.six.mean())
+``` 
+
+```{python}
+fillvalues = {'six': df.six.mean(),
+              'seven': df.seven.mean(),
+              'four': 'line'}
+df_cleaned = df.fillna(value = fillvalues)
+df_cleaned
+```
+
+### Replace
+
+```{python}
+df.seven.replace(np.nan, 0)
+df.seven.replace(np.nan, df.seven.mean())
+
+df.replace({np.nan: 0,
+          2: 55}) # use inplace = True to overwrite the dataframe
+
+df.replace({'six': {np.nan: df.six.mean()},
+            'seven': {np.nan: df.seven.mean()},
+            'four': {np.nan: 'line',
+                    '': 'new_thing'}})
+```
+
+```{python}
+df.ffill()# fills down the rows
+df.ffill(axis = 1) # fills across columns
+```
+
+```{python}
+df.five.astype(int)
+```
+
+```{python}
+df.dropna() # Drops all rows that have an NA
+df.dropna(axis = 1) # Drops any column that has NA
+df.dropna(thresh = 2, axis = 1)
+df.dropna(subset = ['six', 'seven', 'four'], thresh = 2)
+```
+
+
+This code selects the first row of the dataset (all columns), and then writes it out to JSON.
+
+```{python}
+df.iloc[0:1, ].to_json
+```
+
+
+## Practice on the cars dataset
+
+First, let's read in the json file
+
+```{python}
+url = "https://github.com/byuidatascience/data4missing/raw/master/data-raw/mtcars_missing/mtcars_missing.json"
+cars_json = pd.read_json(url)
+cars_json
+```
+
+I recommend giving the dataset you will be cleaning/altering another name so that you don't overwrite the original
+
+```{python}
+#dup df for cleansing
+cars_json_clean = cars_json
+
+```
